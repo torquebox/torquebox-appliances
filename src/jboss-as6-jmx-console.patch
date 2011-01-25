@@ -1,0 +1,31 @@
+diff -ur ../jboss-6.0.0.20100911-M5.orig/common/deploy/jmx-console.war/WEB-INF/jboss-web.xml common/deploy/jmx-console.war/WEB-INF/jboss-web.xml
+--- ../jboss-6.0.0.20100911-M5.orig/common/deploy/jmx-console.war/WEB-INF/jboss-web.xml	2010-11-17 13:47:29.000000000 -0500
++++ common/deploy/jmx-console.war/WEB-INF/jboss-web.xml	2010-11-17 13:49:43.000000000 -0500
+@@ -8,4 +8,5 @@
+       login modules used to authentication users.
+       <security-domain>java:/jaas/jmx-console</security-domain>
+    -->
++   <security-domain>java:/jaas/jmx-console</security-domain>
+ </jboss-web>
+diff -ur ../jboss-6.0.0.20100911-M5.orig/common/deploy/jmx-console.war/WEB-INF/web.xml common/deploy/jmx-console.war/WEB-INF/web.xml
+--- ../jboss-6.0.0.20100911-M5.orig/common/deploy/jmx-console.war/WEB-INF/web.xml	2010-11-17 13:47:29.000000000 -0500
++++ common/deploy/jmx-console.war/WEB-INF/web.xml	2010-11-18 16:00:48.000000000 -0500
+@@ -110,6 +110,18 @@
+      </auth-constraint>
+    </security-constraint>
+    -->
++   <security-constraint>
++     <web-resource-collection>
++       <web-resource-name>HtmlAdaptor</web-resource-name>
++       <description>An example security config that only allows users with the
++         role JBossAdmin to access the HTML JMX console web application
++       </description>
++       <url-pattern>/*</url-pattern>
++     </web-resource-collection>
++     <auth-constraint>
++       <role-name>JBossAdmin</role-name>
++     </auth-constraint>
++   </security-constraint>
+ 
+    <login-config>
+       <auth-method>BASIC</auth-method>

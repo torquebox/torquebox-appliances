@@ -1,0 +1,42 @@
+name: torquebox
+version: 0
+release: 1.0
+
+summary: Appliance with Torquebox and JBoss AS 6
+
+os:
+  name: fedora
+  version: 13
+
+hardware:
+  memory: 2048
+  partitions:
+    "/":
+      size: 5
+
+packages:
+  includes:
+    - @core
+    - wget
+    - which
+    - openssh-clients
+    - jboss-as6
+    - torquebox-deployers
+    - postgresql-server
+
+post:
+  base:
+    - "/sbin/chkconfig postgresql on"
+    - "/sbin/service postgresql initdb"
+    - "/bin/sed -i s/'^host'/'# host'/g /var/lib/pgsql/data/pg_hba.conf"
+    - "/bin/echo 'host    all         all         0.0.0.0/0          md5' >> /var/lib/pgsql/data/pg_hba.conf"
+    - /bin/echo "listen_addresses = '*' " >> /var/lib/pgsql/data/postgresql.conf    
+    - echo "[ -b /dev/xvda3 ] && /sbin/mkswap -f /dev/xvda3" >> /etc/rc.local
+    - echo "[ -b /dev/xvda3 ] && /sbin/swapon /dev/xvda3" >> /etc/rc.local
+    - echo "[ -b /dev/xvdb ] && /sbin/mkswap -f /dev/xvdb" >> /etc/rc.local
+    - echo "[ -b /dev/xvdb ] && /sbin/swapon /dev/xvdb" >> /etc/rc.local
+
+repos:
+  - name: "torquebox-local"
+    baseurl: "file:///mnt/boxgrinder/torquebox-rpm/build/topdir/fedora/13/RPMS/noarch"
+    ephemeral: true
