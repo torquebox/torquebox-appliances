@@ -1,6 +1,6 @@
-%define torquebox_build_number 1357
-%define torquebox_version 1.0.0.RC1-SNAPSHOT
-%define torquebox_rpm_version 1.0.0.RC1.SNAPSHOT
+%define torquebox_build_number 1759
+%define torquebox_version 1.0.0.CR1-SNAPSHOT
+%define torquebox_rpm_version 1.0.0.CR1.SNAPSHOT
 
 %define jboss_name jboss-as6
 
