@@ -6,7 +6,7 @@ summary: Appliance with Torquebox and JBoss AS 6
 
 os:
   name: fedora
-  version: 13
+  version: 14
 
 hardware:
   memory: 2048
@@ -37,6 +37,9 @@ post:
     - echo "[ -b /dev/xvdb ] && /sbin/swapon /dev/xvdb" >> /etc/rc.local
 
 repos:
+  - name: "torquebox-rpm"
+    baseurl: "file:///home/ec2-user/torquebox-rpm/build/topdir/fedora/14/RPMS/noarch"
+    ephemeral: true
   - name: "torquebox-local"
-    baseurl: "file:///mnt/boxgrinder/torquebox-rpm/build/topdir/fedora/13/RPMS/noarch"
+    baseurl: "file:///home/ec2-user/torquebox-appliances/build/topdir/fedora/14/RPMS/noarch"
     ephemeral: true

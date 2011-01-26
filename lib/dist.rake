@@ -49,6 +49,7 @@ end
 desc "Clean all RPMs"
 task 'torquebox:rpm:clean' do
   sh 'rm -Rf ../torquebox-rpm/build/topdir' 
+  sh 'rm -Rf ./build/topdir' 
 end
 
 task 'rpm:core' => [
@@ -82,7 +83,7 @@ end
 
 
 ##
-## Appliances
+# Appliances
 ##
 
 task 'appliance:vmware' => 'torquebox:rpm' do
@@ -93,11 +94,11 @@ task 'appliance:vmware:only' do
   sh "boxgrinder-build -W ./appliances/torquebox.appl -p vmware"
 end
 
-task 'appliance:ec2' => 'torquebox:rpm' do
+task 'appliance:ebs' => 'torquebox:rpm' do
   sh 'boxgrinder-build -W ./appliances/torquebox.appl -p ec2 -d ebs'
 end
 
-task 'appliance:ec2:only' do
+task 'appliance:ebs:only' do
   sh 'boxgrinder-build -W ./appliances/torquebox.appl -p ec2 -d ebs'
 end
 
