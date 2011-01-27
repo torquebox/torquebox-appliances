@@ -42,14 +42,12 @@ cp -R jboss-%{jboss_version_full}/common/deploy/jbossws-console.war $RPM_BUILD_R
 # re-install 'httpha-invoker.sar' to { all }
 cp -R jboss-%{jboss_version_full}/server/all/deploy/httpha-invoker.sar $RPM_BUILD_ROOT/opt/%{jboss_name}/server/all/deploy/
 
-# re-install 'juddi-service.sar' to { all, standard }
+# re-install 'juddi-service.sar' to { all }
 cp -R jboss-%{jboss_version_full}/server/all/deploy/juddi-service.sar $RPM_BUILD_ROOT/opt/%{jboss_name}/server/all/deploy/
-cp -R jboss-%{jboss_version_full}/server/all/deploy/juddi-service.sar $RPM_BUILD_ROOT/opt/%{jboss_name}/server/standard/deploy/
 
-# re-install 'jbossws-console-activator-jboss-beans.xml' to { all, default, standard }
+# re-install 'jbossws-console-activator-jboss-beans.xml' to { all, default }
 cp -R jboss-%{jboss_version_full}/server/all/deploy/jbossws-console-activator-jboss-beans.xml $RPM_BUILD_ROOT/opt/%{jboss_name}/server/all/deploy/
 cp -R jboss-%{jboss_version_full}/server/all/deploy/jbossws-console-activator-jboss-beans.xml $RPM_BUILD_ROOT/opt/%{jboss_name}/server/default/deploy/
-cp -R jboss-%{jboss_version_full}/server/all/deploy/jbossws-console-activator-jboss-beans.xml $RPM_BUILD_ROOT/opt/%{jboss_name}/server/standard/deploy/
 
 
 install -d m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/developer-patches
