@@ -87,19 +87,19 @@ end
 ##
 
 task 'appliance:vmware' => 'torquebox:rpm' do
-  sh "boxgrinder-build -W ./appliances/torquebox.appl -p vmware"
+  sh "boxgrinder build ./appliances/torquebox.appl -p vmware"
 end
 
 task 'appliance:vmware:only' do
-  sh "boxgrinder-build -W ./appliances/torquebox.appl -p vmware"
+  sh "boxgrinder build ./appliances/torquebox.appl -p vmware"
 end
 
 task 'appliance:ebs' => 'torquebox:rpm' do
-  sh 'boxgrinder-build -W ./appliances/torquebox.appl -p ec2 -d ebs'
+  sh 'boxgrinder build ./appliances/torquebox.appl -p ec2 -d ebs'
 end
 
 task 'appliance:ebs:only' do
-  sh 'boxgrinder-build -W ./appliances/torquebox.appl -p ec2 -d ebs'
+  sh 'boxgrinder build ./appliances/torquebox.appl -p ec2 -d ebs'
 end
 
 task 'appliance:ami' => 'torquebox:rpm' do
@@ -107,7 +107,7 @@ task 'appliance:ami' => 'torquebox:rpm' do
     interrupt_handler = proc{ restore_s3 }
     trap "SIGINT", interrupt_handler
     scribble_s3
-    sh 'boxgrinder-build -W ./appliances/torquebox.appl -p ec2 -d ami'
+    sh 'boxgrinder build ./appliances/torquebox.appl -p ec2 -d ami'
   ensure
     restore_s3
   end
@@ -118,7 +118,7 @@ task 'appliance:ami:only' do
     interrupt_handler = proc{ restore_s3 }
     trap "SIGINT", interrupt_handler
     scribble_s3
-    sh 'boxgrinder-build -W ./appliances/torquebox.appl -p ec2 -d ami'
+    sh 'boxgrinder build ./appliances/torquebox.appl -p ec2 -d ami'
   ensure
     restore_s3
   end
