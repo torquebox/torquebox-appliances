@@ -37,16 +37,10 @@ cd %{_topdir}/BUILD
 
 install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/all/deployers
 install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/default/deployers
-install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/osgi/deployers
-install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/standard/deployers
-install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/jbossweb-standalone/deployers
 
 # copy profiles
 cp -R torquebox-%{torquebox_version}/jboss/server/all/deployers/torquebox.deployer/ $RPM_BUILD_ROOT/opt/%{jboss_name}/server/all/deployers/
 cp -R torquebox-%{torquebox_version}/jboss/server/default/deployers/torquebox.deployer/ $RPM_BUILD_ROOT/opt/%{jboss_name}/server/default/deployers/
-cp -R torquebox-%{torquebox_version}/jboss/server/osgi/deployers/torquebox.deployer/ $RPM_BUILD_ROOT/opt/%{jboss_name}/server/osgi/deployers/
-cp -R torquebox-%{torquebox_version}/jboss/server/standard/deployers/torquebox.deployer/ $RPM_BUILD_ROOT/opt/%{jboss_name}/server/standard/deployers/
-cp -R torquebox-%{torquebox_version}/jboss/server/jbossweb-standalone/deployers/torquebox.deployer/ $RPM_BUILD_ROOT/opt/%{jboss_name}/server/jbossweb-standalone/deployers/
 
 %clean
 rm -Rf $RPM_BUILD_ROOT

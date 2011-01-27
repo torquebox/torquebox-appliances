@@ -1,6 +1,6 @@
 %define jboss_name jboss-as6
-%define jboss_version 6.0.0.CR1
-%define jboss_version_full 6.0.0.20101110-CR1
+%define jboss_version 6.0.0.Final
+%define jboss_version_full 6.0.0.Final
 
 Summary:        The JBoss AS 6 Developer Add-ons
 Name:           jboss-as6-developer
@@ -34,10 +34,7 @@ cd %{_topdir}/BUILD
 install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/common/deploy
 install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/all/deploy
 install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/default/deploy
-install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/jbossweb-standalone/deploy
 install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/minimal/deploy
-install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/osgi/deploy
-install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/standard/deploy
 
 # copy common wars
 cp -R jboss-%{jboss_version_full}/common/deploy/jbossws-console.war $RPM_BUILD_ROOT/opt/%{jboss_name}/common/deploy/

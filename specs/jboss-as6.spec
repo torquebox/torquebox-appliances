@@ -1,5 +1,5 @@
-%define jboss_version 6.0.0.CR1
-%define jboss_version_full 6.0.0.20101110-CR1
+%define jboss_version 6.0.0.Final
+%define jboss_version_full 6.0.0.Final
 
 Summary:        JBoss Application Server
 Name:           jboss-as6
@@ -54,9 +54,6 @@ find $RPM_BUILD_ROOT/opt/%{name}/server/ -name "jbossws-console-activator-jboss-
 # Open the HTTPS Connector
 cd $RPM_BUILD_ROOT/opt/%{name}/server/all/deploy/jbossweb.sar && patch -i %{SOURCE2}
 cd $RPM_BUILD_ROOT/opt/%{name}/server/default/deploy/jbossweb.sar && patch -i %{SOURCE2}
-cd $RPM_BUILD_ROOT/opt/%{name}/server/jbossweb-standalone/deploy/jbossweb.sar && patch -i %{SOURCE2}
-cd $RPM_BUILD_ROOT/opt/%{name}/server/osgi/deploy/jbossweb.sar && patch -i %{SOURCE2}
-cd $RPM_BUILD_ROOT/opt/%{name}/server/standard/deploy/jbossweb.sar && patch -i %{SOURCE2}
 
 # Enable authentication for jmx-console
 cd $RPM_BUILD_ROOT/opt/%{name} && patch -p0 -i %{SOURCE3}
