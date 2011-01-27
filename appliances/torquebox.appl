@@ -15,14 +15,13 @@ hardware:
       size: 5
 
 packages:
-  includes:
-    - @core
-    - wget
-    - which
-    - openssh-clients
-    - jboss-as6
-    - torquebox-deployers
-    - postgresql-server
+  - @core
+  - wget
+  - which
+  - openssh-clients
+  - jboss-as6
+  - torquebox-deployers
+  - postgresql-server
 
 post:
   base:
