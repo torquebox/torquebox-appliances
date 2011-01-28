@@ -1,3 +1,5 @@
+# Fri Jan 28 17:53:10 EST 2011
+# Current version ami-9ecd3df7
 name: torquebox
 version: 0
 release: 1.0
@@ -36,8 +38,8 @@ post:
     - echo "[ -b /dev/xvdb ] && /sbin/mkswap -f /dev/xvdb" >> /etc/rc.local
     - echo "[ -b /dev/xvdb ] && /sbin/swapon /dev/xvdb" >> /etc/rc.local
     - /bin/echo "PATH=/opt/jruby/bin:$PATH" > /etc/profile.d/torquebox.sh
-    - /bin/echo "JRUBY_HOME=/opt/jruby" >> /etc/profile.d/torquebox.sh
-    - /bin/echo "JBOSS_HOME=/opt/jboss-as" >> /etc/profile.d/torquebox.sh
+    - /bin/echo "export JRUBY_HOME=/opt/jruby" >> /etc/profile.d/torquebox.sh
+    - /bin/echo "export JBOSS_HOME=/opt/jboss-as" >> /etc/profile.d/torquebox.sh
 
 repos:
   - name: "torquebox-local"
