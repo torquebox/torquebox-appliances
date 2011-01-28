@@ -35,10 +35,7 @@ task 'torquebox:rpm:clean' do
 end
 
 desc 'Build all RPMs for torquebox. '
-task 'torquebox:rpm' => [
-  'rpm:all'
-  'rpm:repodata:force'
-]
+task 'torquebox:rpm' => [ 'rpm:all', 'rpm:repodata:force' ]
 
 
 ###
