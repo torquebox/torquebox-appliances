@@ -8,7 +8,7 @@ task 'sanity'=>[ 'sanity:dirs', 'sanity:versions' ]
 task 'sanity:dirs' do
   dir =  '../rumpler'
   print "Checking #{dir}...."
-  ( File.exist?( dir ) ) ? puts "kk!" : fail( "Missing important directory: #{dir}" )
+  ( File.exist?( dir ) ) ? puts( "kk!" ) : fail( "Missing important directory: #{dir}" )
 end
 
 task 'sanity:versions' do
