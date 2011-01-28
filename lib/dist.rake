@@ -8,7 +8,6 @@ task 'sanity'=>[ 'sanity:dirs', 'sanity:versions' ]
 task 'sanity:dirs' do
   [ 
     '../rumpler',
-    '../torquebox-rpm'
   ].each do |dir|
     print "Checking #{dir}...."
     if ( File.exist?( dir ) )
@@ -37,27 +36,16 @@ end
 ###
 ### RPM
 ###
-
-desc 'Build all RPMs for torquebox. Requires git://github.com/torquebox/torquebox-rpm.git in the parent directory.'
-task 'torquebox:rpm' => 'rpm:core' do
-  Dir.chdir( '../torquebox-rpm' ) do
-    sh 'rake rpm:all'
-    sh 'rake rpm:repodata:force'
-  end
-end
-
 desc "Clean all RPMs"
 task 'torquebox:rpm:clean' do
-  sh 'rm -Rf ../torquebox-rpm/build/topdir' 
   sh 'rm -Rf ./build/topdir' 
 end
 
-task 'rpm:core' => [
-  'rpm:jboss-as6',
-  'rpm:torquebox-deployers',
+desc 'Build all RPMs for torquebox. '
+task 'torquebox:rpm' => [
+  'rpm:all'
   'rpm:repodata:force'
 ]
-
 
 
 ###
@@ -65,19 +53,12 @@ task 'rpm:core' => [
 ###
 desc "Resolve dependencies for TorqueBox RPMs and scribble spec files"
 task 'torquebox:rumpler' => [ 'sanity:versions:verify' ] do
-  puts "rumpling torquebox-rpm"
-  Dir.chdir( "../torquebox-rpm" ) do
-    FileUtils.mkdir_p( 'specs/gems' )
-    if ( Dir[ 'specs/gems/*.spec' ].empty? )
-      sh "../rumpler/bin/rumpler -r gemfiles/root.yml -o ./specs/gems/ -n torquebox-rubygems-dependencies -V #{BuildVersion.instance.torquebox_rpm}"
-    else
-      puts "INFO: specs present, not rumpling"
-    end
-  end
+  FileUtils.mkdir_p( 'specs/gems' )
+  sh "../rumpler/bin/rumpler -r gemfiles/root.yml -o ./specs/gems/ -n torquebox-rubygems-dependencies -V #{BuildVersion.instance.torquebox_rpm}"
 end
 
 task 'torquebox:rumpler:clean' do
-  sh 'rm -Rf ../torquebox-rpm/specs/gems' 
+  sh 'rm -Rf specs/gems' 
 end
 
 

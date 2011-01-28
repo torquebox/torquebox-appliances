@@ -1,0 +1,4 @@
+inherent:
+  - Gemfile-core
+base:
+  - Gemfile-base

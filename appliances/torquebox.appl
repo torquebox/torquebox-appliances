@@ -16,6 +16,7 @@ hardware:
 
 packages:
   - @core
+  - git
   - wget
   - which
   - openssh-clients
@@ -34,11 +35,11 @@ post:
     - echo "[ -b /dev/xvda3 ] && /sbin/swapon /dev/xvda3" >> /etc/rc.local
     - echo "[ -b /dev/xvdb ] && /sbin/mkswap -f /dev/xvdb" >> /etc/rc.local
     - echo "[ -b /dev/xvdb ] && /sbin/swapon /dev/xvdb" >> /etc/rc.local
+    - /bin/echo "PATH=/opt/jruby/bin:$PATH" > /etc/profile.d/torquebox.sh
+    - /bin/echo "JRUBY_HOME=/opt/jruby" >> /etc/profile.d/torquebox.sh
+    - /bin/echo "JBOSS_HOME=/opt/jboss-as" >> /etc/profile.d/torquebox.sh
 
 repos:
-  - name: "torquebox-rpm"
-    baseurl: "file:///home/ec2-user/torquebox-rpm/build/topdir/fedora/14/RPMS/noarch"
-    ephemeral: true
   - name: "torquebox-local"
     baseurl: "file:///home/ec2-user/torquebox-appliances/build/topdir/fedora/14/RPMS/noarch"
     ephemeral: true

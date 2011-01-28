@@ -56,7 +56,7 @@ class BuildVersion
     torquebox_versions = {}
     [
       './specs/torquebox-deployers.spec',
-      '../torquebox-rpm/specs/torquebox-rubygems.spec',
+      '/specs/torquebox-rubygems.spec',
     ].each do |spec|
       torquebox_versions[spec] = determine_value( spec, 'torquebox_build_number' )
     end

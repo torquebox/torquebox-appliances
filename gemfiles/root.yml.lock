@@ -1,0 +1,81 @@
+--- 
+:base: 
+- :gem_version: !ruby/object:Gem::Version 
+    hash: 75
+    prerelease: false
+    segments: &id001 
+      - 1
+      - 5
+      - 145
+      - 2
+    version: 1.5.0145.2
+  :platform: ruby
+  :source: http://rubygems.org/
+  :version: *id001
+  :name: bouncy-castle-java
+- :gem_version: !ruby/object:Gem::Version 
+    hash: 6
+    prerelease: false
+    segments: &id002 
+      - 0
+      - 7
+      - 2
+    version: 0.7.2
+  :platform: ruby
+  :source: http://rubygems.org/
+  :version: *id002
+  :name: jruby-openssl
+- :gem_version: !ruby/object:Gem::Version 
+    hash: 7
+    prerelease: false
+    segments: &id003 
+      - 1
+      - 0
+      - 9
+    version: 1.0.9
+  :platform: ruby
+  :source: http://rubygems.org/
+  :version: *id003
+  :name: bundler
+:inherent: 
+- :platform: ruby
+  :version: 
+  - 0
+  - 8
+  - 7
+  :name: rake
+- :platform: ruby
+  :version: 
+  - 0
+  - 3
+  - 1
+  :name: columnize
+- :platform: ruby
+  :version: 
+  - 0
+  - 43
+  :name: linecache
+- :platform: ruby
+  :version: 
+  - 1
+  - 3
+  - 0
+  :name: rspec
+- :platform: ruby
+  :version: 
+  - 0
+  - 10
+  - 3
+  :name: ruby-debug-base
+- :platform: ruby
+  :version: 
+  - 0
+  - 10
+  - 3
+  :name: ruby-debug
+- :platform: ruby
+  :version: 
+  - 0
+  - 0
+  - 1
+  :name: sources

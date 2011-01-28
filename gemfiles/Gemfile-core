@@ -1,0 +1,9 @@
+source "http://rubygems.org"
+
+gem "columnize",       "0.3.1"
+gem "rake",            "0.8.7"
+gem "rspec",           "1.3.0"
+gem "ruby-debug",      "0.10.3"
+#gem "ruby-debug-base", "0.10.3.2"
+gem "sources",         "0.0.1"
+
