@@ -6,16 +6,9 @@
 task 'sanity'=>[ 'sanity:dirs', 'sanity:versions' ] 
 
 task 'sanity:dirs' do
-  [ 
-    '../rumpler',
-  ].each do |dir|
-    print "Checking #{dir}...."
-    if ( File.exist?( dir ) )
-      puts "kk!"
-    else
-      fail( "Missing important directory: #{dir}" )
-    end
-  end
+  dir =  '../rumpler'
+  print "Checking #{dir}...."
+  ( File.exist?( dir ) ) ? puts "kk!" : fail( "Missing important directory: #{dir}" )
 end
 
 task 'sanity:versions' do
