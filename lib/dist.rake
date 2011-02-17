@@ -57,6 +57,7 @@ end
 # Appliances
 ##
 
+desc "Build VMware"
 task 'appliance:vmware' => 'torquebox:rpm' do
   sh "boxgrinder build ./appliances/torquebox.appl -p vmware"
 end
@@ -73,6 +74,7 @@ task 'appliance:ebs:only' do
   sh 'boxgrinder build ./appliances/torquebox.appl -p ec2 -d ebs'
 end
 
+desc "Build AMI"
 task 'appliance:ami' => 'torquebox:rpm' do
   begin
     interrupt_handler = proc{ restore_s3 }

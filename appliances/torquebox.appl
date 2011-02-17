@@ -23,7 +23,7 @@ packages:
   - which
   - openssh-clients
   - jboss-as6
-  - torquebox-deployers
+  - torquebox-jboss-as6-deployers
   - postgresql-server
 
 post:
@@ -43,5 +43,5 @@ post:
 
 repos:
   - name: "torquebox-local"
-    baseurl: "file:///home/ec2-user/torquebox-appliances/build/topdir/fedora/14/RPMS/noarch"
+    baseurl: "file:///mnt/torquebox-appliances/build/topdir/fedora/14/RPMS/noarch"
     ephemeral: true
