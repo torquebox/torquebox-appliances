@@ -59,11 +59,11 @@ end
 
 desc "Build VMware"
 task 'appliance:vmware' => 'torquebox:rpm' do
-  sh "boxgrinder build ./appliances/torquebox.appl -p vmware"
+  sh "boxgrinder build ./appliances/torquebox.appl -p vmware -d local"
 end
 
 task 'appliance:vmware:only' do
-  sh "boxgrinder build ./appliances/torquebox.appl -p vmware"
+  sh "boxgrinder build ./appliances/torquebox.appl -p vmware -d local"
 end
 
 task 'appliance:ebs' => 'torquebox:rpm' do
