@@ -1,11 +1,11 @@
-%define torquebox_build_number 1761
+%define torquebox_build_number 1864
 %define torquebox_version 1.0.0.CR1-SNAPSHOT
 %define torquebox_rpm_version 1.0.0.CR1.SNAPSHOT
 
 %define jboss_name jboss-as6
 
-Summary:        TorqueBox Deployers
-Name:           torquebox-deployers
+Summary:        TorqueBox JBoss AS6 Deployers
+Name:           torquebox-jboss-as6-deployers
 Version:        %{torquebox_rpm_version}
 Release:        1
 License:        LGPL
@@ -13,16 +13,12 @@ BuildArch:      noarch
 Group:          Applications/System
 Source:         http://ci.stormgrind.org/repository/download/bt7/%{torquebox_build_number}:id/torquebox-dist-bin.zip?guest=1%{torquebox_build_number}
 
-Requires:       %{jboss_name}
-Requires:       torquebox-jruby
-Requires:       torquebox-rubygems
-Requires:       torquebox-rubygems-dependencies
-Requires:       rubyabi(1.8-java) 
+Requires:       torquebox-jboss-as6-common
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 %description
-The TorqueBox Deployers
+The TorqueBox JBoss AS6 Deployers
 
 %define __jar_repack %{nil}
 
@@ -34,12 +30,13 @@ rm -Rf $RPM_BUILD_ROOT
 
 cd %{_topdir}/BUILD
 
-install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/all/deployers
+# Create profile deployer directories to which we copy the TorqueBox subdir
 install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/default/deployers
+install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/all/deployers
 
-# copy profiles
-cp -R torquebox-%{torquebox_version}/jboss/server/all/deployers/torquebox.deployer/ $RPM_BUILD_ROOT/opt/%{jboss_name}/server/all/deployers/
-cp -R torquebox-%{torquebox_version}/jboss/server/default/deployers/torquebox.deployer/ $RPM_BUILD_ROOT/opt/%{jboss_name}/server/default/deployers/
+# Copy the deployer directories
+cp -R torquebox-%{torquebox_version}/jboss/server/default/deployers/torquebox.deployer/  $RPM_BUILD_ROOT/opt/%{jboss_name}/server/default/deployers/
+cp -R torquebox-%{torquebox_version}/jboss/server/all/deployers/torquebox.deployer/        $RPM_BUILD_ROOT/opt/%{jboss_name}/server/all/deployers/
 
 %clean
 rm -Rf $RPM_BUILD_ROOT
