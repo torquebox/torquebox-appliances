@@ -18,6 +18,7 @@
 
 STOMPBOX_INSTALL_DIR=/opt/stompbox
 STOMPBOX_GIT_URL=https://github.com/torquebox/stompbox.git
+JRUBY_HOME=/opt/jruby
 
 # Source function library.
 . /etc/init.d/functions
@@ -45,18 +46,94 @@ function success_or_failure() {
     echo
 }
 
-function clone_stompbox() {
-    echo -n "  git clone ${STOMPBOX_GIT_URL}"
+function install_stompbox_app() {
+    echo " - Install ${STOMPBOX_GIT_URL}"
+    RETVAL=0
     git clone ${STOMPBOX_GIT_URL} ${STOMPBOX_INSTALL_DIR}
+    RETVAL=$?
     success_or_failure
 }
 
-start() {
+function remove_stompbox() {
+  echo -n " - Remove ${STOMPBOX_INSTALL_DIR}"
+  RETVAL=0
+  rm -Rf ${STOMPBOX_INSTALL_DIR}
+  RETVAL=$?
+  success_or_failure
+}
+
+function install_stompbox_bundle() {
+    echo " - Installing Gem bundle"
+    cd ${STOMPBOX_INSTALL_DIR} && ${JRUBY_HOME}/bin/jruby -S bundle install
+    success_or_failure
+}
+
+function generate_stompbox_yml() {
+    echo " - Seeding StompBox configuration"
+    api_key=$(ifconfig | openssl sha1 | cut -f 2 -d ' ')
+    echo "   API KEY: ${api_key}"
+
+    echo -n "   > /etc/stompbox.conf"
+    RETVAL=0
+    echo "STOMPBOX_API_KEY=${api_key}" > /etc/stompbox.conf
+    RETVAL=$?
+    success_or_failure
+
+    yaml=${STOMPBOX_INSTALL_DIR}/config/stompbox.yml
+    echo -n "   > ${yaml}"
+
+    RETVAL=0
+    echo '' > ${STOMPBOX_INSTALL_DIR}/config/stompbox.yml
+    echo "database: postgres://stompbox:stompbox@localhost/stompbox" >> ${yaml}
+    echo "deployments: /opt/stompbox-deployments"                    >> ${yaml}
+    echo ""                                                          >> ${yaml}
+    echo "username: admin"                                           >> ${yaml}
+    echo "password: notpassword"                                     >> ${yaml}
+    echo ""                                                          >> ${yaml}
+    echo "api_key: ${api_key}"                                       >> ${yaml}
+    RETVAL=$?
+    success_or_failure
+}
+
+function setup_database_user() {
+  psql -U postgres -c '\du stompbox' | grep stompbox > /dev/null
+  if [ $? != 0 ] ; then 
+    echo -n " - Create DB user"
+    RETVAL=0
+    psql -U postgres -c "create user stompbox password 'stompbox' createdb"
+    RETVAL=$?
+    success_or_failure
+  else
+    echo -n " - DB user already exists"
+    RETVAL=0
+    success_or_failure
+  fi
+}
+
+function remove_database_user() {
+  psql -U postgres -c '\du stompbox' | grep stompbox > /dev/null
+  if [ $? == 0 ] ; then 
+    echo -n " - Remove DB user"
+    RETVAL=0
+    psql -U postgres -c "drop user stompbox" > /dev/null
+    RETVAL=$?
+    success_or_failure
+  else
+    echo -n " - No DB user to remove"
+    RETVAL=0
+    success_or_failure
+  fi
+}
+
+install() {
     echo -n "Starting ${NAME}: "
     RETVAL=0
     if [ ! -d /opt/stompbox ] ; then
       echo ""
-      clone_stompbox
+      install_stompbox_app
+      install_stompbox_bundle
+      generate_stompbox_yml
+      setup_database_user
     else
       success_or_failure
     fi
@@ -64,10 +141,9 @@ start() {
 }
 
 clean() {
-    echo -n "Cleaning ${NAME}: "
-    RETVAL=0
-    rm -Rf /opt/stompbox
-    success_or_failure
+    echo "Cleaning ${NAME}: "
+    remove_stompbox
+    remove_database_user
 }
 
 stop() {
@@ -87,27 +163,32 @@ status() {
 
 case "$1" in
 start)
-    start
+    install
     ;;
 stop)
     stop
     ;;
 restart|reload)
     stop
-    sleep 1
-    start
     ;;
 status)
     status
+    ;;
+install)
+    install
+    ;;
+force-install)
+    clean
+    install
     ;;
 clean)
     clean
     ;;
 help)
-    echo "usage: ${NAME} (start|status|clean|help)"
+    echo "usage: ${NAME} (start|status|instal|force-install|clean|help)"
     ;;
 *)
-    echo "usage: ${NAME} (start|status|clean|help)"
+    echo "usage: ${NAME} (start|status|instal|force-install|clean|help)"
     exit 1
 esac
 

@@ -34,6 +34,8 @@ install -m 755 %{SOURCE0} $RPM_BUILD_ROOT%{_initrddir}/%{name}-installer
 install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/default/deploy
 install -m 755 %{SOURCE1} $RPM_BUILD_ROOT/opt/%{jboss_name}/server/default/deploy/torquebox-stompbox-knob.yml
 
+install -d -m 755 $RPM_BUILD_ROOT/opt/stompbox-deployments
+
 %clean
 rm -Rf $RPM_BUILD_ROOT
 
