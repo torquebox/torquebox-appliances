@@ -73,12 +73,6 @@ function generate_stompbox_yml() {
     api_key=$(ifconfig | openssl sha1 | cut -f 2 -d ' ')
     echo "   API KEY: ${api_key}"
 
-    echo -n "   > /etc/stompbox.conf"
-    RETVAL=0
-    echo "STOMPBOX_API_KEY=${api_key}" > /etc/stompbox.conf
-    RETVAL=$?
-    success_or_failure
-
     yaml=${STOMPBOX_INSTALL_DIR}/config/stompbox.yml
     echo -n "   > ${yaml}"
 
@@ -98,13 +92,13 @@ function generate_stompbox_yml() {
 function setup_database_user() {
   psql -U postgres -c '\du stompbox' | grep stompbox > /dev/null
   if [ $? != 0 ] ; then 
-    echo -n " - Create DB user"
+    echo -n " - Create database user 'stompbox'"
     RETVAL=0
-    psql -U postgres -c "create user stompbox password 'stompbox' createdb"
+    psql -U postgres -q -c "create user stompbox password 'stompbox' createdb"
     RETVAL=$?
     success_or_failure
   else
-    echo -n " - DB user already exists"
+    echo -n " - Database user 'stompbox' already exists"
     RETVAL=0
     success_or_failure
   fi
@@ -113,13 +107,43 @@ function setup_database_user() {
 function remove_database_user() {
   psql -U postgres -c '\du stompbox' | grep stompbox > /dev/null
   if [ $? == 0 ] ; then 
-    echo -n " - Remove DB user"
+    echo -n " - Remove database user 'stompbox'"
     RETVAL=0
-    psql -U postgres -c "drop user stompbox" > /dev/null
+    psql -U postgres -q -c "drop user stompbox" > /dev/null
     RETVAL=$?
     success_or_failure
   else
-    echo -n " - No DB user to remove"
+    echo -n " - No database user 'stompbox' to remove"
+    RETVAL=0
+    success_or_failure
+  fi
+}
+
+function setup_database() {
+  psql -U postgres -l | grep stompbox > /dev/null
+  if [ $? != 0 ] ; then
+    echo -n " - Create database 'stompbox'"
+    RETVAL=0
+    psql -U postgres -q -c "create database stompbox owner stompbox encoding 'utf8'"
+    RETVAL=$?
+    success_or_failure
+  else
+    echo -n " - Database 'stompbox' already exists"
+    RETVAL=0
+    success_or_failure
+  fi
+}
+
+function remove_database() {
+  psql -U postgres -l | grep stompbox > /dev/null
+  if [ $? == 0 ] ; then
+    echo -n " - Remove database 'stompbox'"
+    RETVAL=0
+    psql -U postgres -q -c "drop database stompbox" > /dev/null
+    RETVAL=$?
+    success_or_failure
+  else
+    echo -n " - No database 'stompbox' to remove"
     RETVAL=0
     success_or_failure
   fi
@@ -132,18 +156,20 @@ install() {
       echo ""
       install_stompbox_app
       install_stompbox_bundle
-      generate_stompbox_yml
       setup_database_user
+      setup_database
+      generate_stompbox_yml
     else
       success_or_failure
     fi
     return $RETVAL
 }
 
-clean() {
+uninstall() {
     echo "Cleaning ${NAME}: "
-    remove_stompbox
+    remove_database
     remove_database_user
+    remove_stompbox
 }
 
 stop() {
@@ -178,17 +204,17 @@ install)
     install
     ;;
 force-install)
-    clean
+    uninstall
     install
     ;;
-clean)
-    clean
+uninstall)
+    uninstall
     ;;
 help)
-    echo "usage: ${NAME} (start|status|instal|force-install|clean|help)"
+    echo "usage: ${NAME} (start|status|instal|force-install|uninstall|help)"
     ;;
 *)
-    echo "usage: ${NAME} (start|status|instal|force-install|clean|help)"
+    echo "usage: ${NAME} (start|status|instal|force-install|uninstall|help)"
     exit 1
 esac
 
