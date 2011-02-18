@@ -1,0 +1,115 @@
+#!/bin/sh
+#
+# torquebox-stompbox-installer	Installs StompBox from Git at first boot
+#
+# chkconfig: 2345 80 35
+# description: TorqueBox StompBox Boot-time Installer
+# processname: thin
+
+### BEGIN INIT INFO
+# Provides: torquebox-stompbox-installer
+# Required-Start: $network $syslog
+# Required-Stop: $network
+# Default-Start:
+# Default-Stop:
+# Short-Description: TorqueBox StompBox Installer
+# Description: TorqueBox StompBox Installer
+### END INIT INFO
+
+STOMPBOX_INSTALL_DIR=/opt/stompbox
+STOMPBOX_GIT_URL=https://github.com/torquebox/stompbox.git
+
+# Source function library.
+. /etc/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ ${NETWORKING} = "no" ] && exit 0
+
+NAME="$(basename $0)"
+unset ISBOOT
+if [ "${NAME:0:1}" = "S" -o "${NAME:0:1}" = "K" ]; then
+    NAME="${NAME:3}"
+    ISBOOT="1"
+fi
+
+function success_or_failure() {
+    if [ $RETVAL -eq 0 ]; then
+        echo_success
+    else
+        echo_failure
+    fi
+
+    echo
+}
+
+function clone_stompbox() {
+    echo -n "  git clone ${STOMPBOX_GIT_URL}"
+    git clone ${STOMPBOX_GIT_URL} ${STOMPBOX_INSTALL_DIR}
+    success_or_failure
+}
+
+start() {
+    echo -n "Starting ${NAME}: "
+    RETVAL=0
+    if [ ! -d /opt/stompbox ] ; then
+      echo ""
+      clone_stompbox
+    else
+      success_or_failure
+    fi
+    return $RETVAL
+}
+
+clean() {
+    echo -n "Cleaning ${NAME}: "
+    RETVAL=0
+    rm -Rf /opt/stompbox
+    success_or_failure
+}
+
+stop() {
+    echo -n "Stopping ${NAME}: "
+    RETVAL=0
+    success_or_failure
+    return $RETVAL 
+}
+
+status() {
+  if [ -d ${STOMPBOX_INSTALL_DIR} ] ; then
+    echo "${NAME} is installed"
+  else
+    echo "${NAME} is not installed"
+  fi
+}
+
+case "$1" in
+start)
+    start
+    ;;
+stop)
+    stop
+    ;;
+restart|reload)
+    stop
+    sleep 1
+    start
+    ;;
+status)
+    status
+    ;;
+clean)
+    clean
+    ;;
+help)
+    echo "usage: ${NAME} (start|status|clean|help)"
+    ;;
+*)
+    echo "usage: ${NAME} (start|status|clean|help)"
+    exit 1
+esac
+
+exit $RETVAL
+
