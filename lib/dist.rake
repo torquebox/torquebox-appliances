@@ -87,14 +87,7 @@ task 'appliance:ami' => 'torquebox:rpm' do
 end
 
 task 'appliance:ami:only' do
-  begin
-    interrupt_handler = proc{ restore_s3 }
-    trap "SIGINT", interrupt_handler
-    scribble_s3
-    sh 'boxgrinder build ./appliances/torquebox.appl -p ec2 -d ami'
-  ensure
-    restore_s3
-  end
+  sh 'boxgrinder build ./appliances/torquebox.appl -p ec2 -d ami'
 end
 
 task 'appliance:clean' => [ 'torquebox:rpm:clean', 'torquebox:rumpler:clean' ] do

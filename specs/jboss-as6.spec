@@ -17,6 +17,7 @@ Requires:       shadow-utils
 Requires:       coreutils
 Requires:       java-1.6.0-openjdk
 Requires:       initscripts
+Requires:       libaio
 Requires(post): /sbin/chkconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -80,10 +81,10 @@ rm -Rf $RPM_BUILD_ROOT
 %post
 /sbin/chkconfig --add %{name}
 
-ln -s /etc/sysconfig/%{name} /etc/sysconfig/jboss-as
-ln -s /opt/%{name} /opt/jboss-as
-ln -s /etc/init.d/%{name} /etc/init.d/jboss-as
-ln -s /etc/init.d/%{name} /etc/init.d/jboss_as
+#ln -s /etc/sysconfig/%{name} /etc/sysconfig/jboss-as
+#ln -s /opt/%{name} /opt/jboss-as
+#ln -s /etc/init.d/%{name} /etc/init.d/jboss-as
+#ln -s /etc/init.d/%{name} /etc/init.d/jboss_as
 
 echo "jboss-as6 soft nofile 4096"           >> /etc/security/limits.conf
 echo "jboss-as6 hard nofile 4096"           >> /etc/security/limits.conf

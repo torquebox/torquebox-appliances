@@ -28,6 +28,7 @@
 [ ${NETWORKING} = "no" ] && exit 0
 
 NAME="jboss-as6"
+MEMORY_RESERVE=1024
 
 # Source configuration.
 [ -f /etc/java/java.conf ] && . /etc/java/java.conf
@@ -56,7 +57,7 @@ if [ `curl -o /dev/null -s -m 5 -w '%{http_code}' http://169.254.169.254/latest/
 fi
 
 memory=`dmesg | grep Memory: | cut -f 2 -d '/' | sed 's/k.*//g'`
-reserved_mem=512
+reserved_mem=$MEMORY_RESERVE
 jvm_mem=$(($memory / 1024 - $reserved_mem))
 jvm_heap=$(($jvm_mem * 75 / 100))
 jvm_permgen=$(($jvm_mem * 25 / 100))

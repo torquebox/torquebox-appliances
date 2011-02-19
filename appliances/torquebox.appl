@@ -12,6 +12,7 @@ os:
 
 hardware:
   memory: 2048
+  cpus: 2
   partitions:
     "/":
       size: 5
@@ -25,12 +26,14 @@ packages:
   - jboss-as6
   - torquebox-jboss-as6-deployers
   - postgresql-server
+  - torquebox-stompbox
 
 post:
   base:
     - "/sbin/chkconfig postgresql on"
     - "/sbin/service postgresql initdb"
-    - "/bin/sed -i s/'^host'/'# host'/g /var/lib/pgsql/data/pg_hba.conf"
+    - "/bin/sed -i 's/^\(local.*\)ident$/\1trust/g' /var/lib/pgsql/data/pg_hba.conf"
+    - "/bin/sed -i s/'^host'/'# host'/g             /var/lib/pgsql/data/pg_hba.conf"
     - "/bin/echo 'host    all         all         0.0.0.0/0          md5' >> /var/lib/pgsql/data/pg_hba.conf"
     - /bin/echo "listen_addresses = '*' " >> /var/lib/pgsql/data/postgresql.conf    
     - echo "[ -b /dev/xvda3 ] && /sbin/mkswap -f /dev/xvda3" >> /etc/rc.local
@@ -39,7 +42,7 @@ post:
     - echo "[ -b /dev/xvdb ] && /sbin/swapon /dev/xvdb" >> /etc/rc.local
     - /bin/echo "PATH=/opt/jruby/bin:$PATH" > /etc/profile.d/torquebox.sh
     - /bin/echo "export JRUBY_HOME=/opt/jruby" >> /etc/profile.d/torquebox.sh
-    - /bin/echo "export JBOSS_HOME=/opt/jboss-as" >> /etc/profile.d/torquebox.sh
+    - /bin/echo "export JBOSS_HOME=/opt/jboss-as6" >> /etc/profile.d/torquebox.sh
 
 repos:
   - name: "torquebox-local"
