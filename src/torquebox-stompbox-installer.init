@@ -165,9 +165,9 @@ install() {
       echo ""
       install_stompbox_app
       install_stompbox_bundle
-      #setup_database_user
-      #setup_database
-      #generate_stompbox_yml
+      setup_database_user
+      setup_database
+      generate_stompbox_yml
     else
       success_or_failure
     fi
