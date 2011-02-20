@@ -16,7 +16,7 @@ Source1:        %{name}-knob.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires:       torquebox
-Requires:       postgres
+Requires:       postgresql
 Requires:       git
 Requires(post): /sbin/chkconfig
 

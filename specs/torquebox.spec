@@ -14,8 +14,8 @@ Group:          Applications/System
 
 Requires:       %{jboss_name}
 Requires:       torquebox-jruby
-Requires:       torquebox-%{jboss-name}-common
-Requires:       torquebox-%{jboss-name}-deployers
+Requires:       torquebox-%{jboss_name}-common
+Requires:       torquebox-%{jboss_name}-deployers
 Requires:       torquebox-rubygems-dependencies
 
 %description
