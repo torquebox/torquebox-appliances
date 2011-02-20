@@ -11,6 +11,7 @@ task 'sanity:dirs' do
   ( File.exist?( dir ) ) ? puts( "kk!" ) : fail( "Missing important directory: #{dir}" )
 end
 
+desc "Sanity-check versions of stuff"
 task 'sanity:versions' do
   BuildVersion.instance
 end

@@ -54,12 +54,9 @@ class BuildVersion
     @torquebox_rpm     = '1.0.0.CR1.SNAPSHOT'
 
     torquebox_versions = {}
-    [
-      './specs/torquebox-jboss-as6-common.spec',
-      './specs/torquebox-jboss-as6-deployers.spec',
-      './specs/torquebox-jruby-vfs.spec',
-    ].each do |spec|
-      torquebox_versions[spec] = determine_value( spec, 'torquebox_build_number' )
+    Dir[ './specs/*.spec' ].each do |spec|
+      version = determine_value( spec, 'torquebox_build_number' )
+      ( torquebox_versions[spec] = version ) unless version.nil?
     end
     if ( torquebox_versions.values.uniq.size == 1 )
       @torquebox = torquebox_versions.values.uniq.first
@@ -68,7 +65,7 @@ class BuildVersion
       torquebox_versions.each do |spec, ver|
         puts "  #{ver} - #{spec}"
       end
-      fail( "TorqueBox build number mismatch" )
+      raise( "TorqueBox build number mismatch" )
     end
   end
 
