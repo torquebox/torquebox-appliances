@@ -21,6 +21,13 @@ Requires:       torquebox-rubygems-dependencies
 %description
 The TorqueBox Common
 
+%install
+rm -Rf $RPM_BUILD_ROOT
+mkdir $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root)
+/
 
 %changelog
 * Sun Feb 20 2011 Bob McWhirter
