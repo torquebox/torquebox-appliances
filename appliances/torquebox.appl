@@ -23,9 +23,8 @@ packages:
   - wget
   - which
   - openssh-clients
-  - jboss-as6
-  - torquebox-jboss-as6-deployers
   - postgresql-server
+  - torquebox
   - torquebox-stompbox
 
 post:

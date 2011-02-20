@@ -15,7 +15,8 @@ Source0:        %{name}-installer.init
 Source1:        %{name}-knob.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-Requires:       jboss-as6
+Requires:       torquebox
+Requires:       postgres
 Requires:       git
 Requires(post): /sbin/chkconfig
 
