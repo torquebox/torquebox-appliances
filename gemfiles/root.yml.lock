@@ -44,126 +44,86 @@
 :base: 
 - :platform: ruby
   :source: http://rubygems.org/
+  :version: &id001 
+    - 1
+    - 5
+    - 145
+    - 2
   :gem_version: !ruby/object:Gem::Version 
     hash: 75
     prerelease: false
-    segments: &id001 
-      - 1
-      - 5
-      - 145
-      - 2
+    segments: *id001
     version: 1.5.0145.2
-  :version: *id001
   :name: bouncy-castle-java
 - :platform: ruby
   :source: http://rubygems.org/
+  :version: &id002 
+    - 0
+    - 7
+    - 2
   :gem_version: !ruby/object:Gem::Version 
     hash: 6
     prerelease: false
-    segments: &id002 
-      - 0
-      - 7
-      - 2
+    segments: *id002
     version: 0.7.2
-  :version: *id002
   :name: jruby-openssl
 - :platform: ruby
   :source: http://rubygems.org/
+  :version: &id003 
+    - 1
+    - 0
+    - 10
   :gem_version: !ruby/object:Gem::Version 
     hash: 8
     prerelease: false
-    segments: &id003 
-      - 1
-      - 0
-      - 10
+    segments: *id003
     version: 1.0.10
-  :version: *id003
   :name: bundler
 - :platform: ruby
   :source: http://rubygems.torquebox.org/1864/
+  :version: &id004 
+    - 1
+    - 0
+    - 0
+    - CR1
   :gem_version: &id005 !ruby/object:Gem::Version 
     hash: 144091406
     prerelease: true
-    segments: &id004 
-      - 1
-      - 0
-      - 0
-      - CR1
+    segments: *id004
     version: 1.0.0.CR1
-  :version: *id004
   :name: org.torquebox.capistrano-support
+- :platform: java
+  :source: http://rubygems.torquebox.org/1864/
+  :version: *id004
+  :gem_version: *id005
+  :name: org.torquebox.container-foundation
+- :platform: java
+  :source: http://rubygems.torquebox.org/1864/
+  :version: *id004
+  :gem_version: *id005
+  :name: org.torquebox.naming-client
+- :platform: java
+  :source: http://rubygems.torquebox.org/1864/
+  :version: *id004
+  :gem_version: *id005
+  :name: org.torquebox.messaging-client
+- :platform: java
+  :source: http://rubygems.torquebox.org/1864/
+  :version: *id004
+  :gem_version: *id005
+  :name: org.torquebox.messaging-container
+- :platform: java
+  :source: http://rubygems.torquebox.org/1864/
+  :version: *id004
+  :gem_version: *id005
+  :name: org.torquebox.naming-container
 - :platform: ruby
   :source: http://rubygems.torquebox.org/1864/
-  :gem_version: *id005
   :version: *id004
+  :gem_version: *id005
   :name: org.torquebox.rake-support
-- :platform: java
-  :source: http://rubygems.org/
-  :gem_version: !ruby/object:Gem::Version 
-    hash: -238992827
-    prerelease: true
-    segments: &id006 
-      - 1
-      - 0
-      - 0
-      - Beta23
-    version: 1.0.0.Beta23
-  :version: *id006
-  :name: org.torquebox.torquebox-container-foundation
-- :platform: java
-  :source: http://rubygems.org/
-  :gem_version: !ruby/object:Gem::Version 
-    hash: -238992827
-    prerelease: true
-    segments: &id007 
-      - 1
-      - 0
-      - 0
-      - Beta23
-    version: 1.0.0.Beta23
-  :version: *id007
-  :name: org.torquebox.torquebox-naming-client
-- :platform: java
-  :source: http://rubygems.org/
-  :gem_version: !ruby/object:Gem::Version 
-    hash: -238992827
-    prerelease: true
-    segments: &id008 
-      - 1
-      - 0
-      - 0
-      - Beta23
-    version: 1.0.0.Beta23
-  :version: *id008
-  :name: org.torquebox.torquebox-messaging-client
-- :platform: java
-  :source: http://rubygems.org/
-  :gem_version: !ruby/object:Gem::Version 
-    hash: -238992827
-    prerelease: true
-    segments: &id009 
-      - 1
-      - 0
-      - 0
-      - Beta23
-    version: 1.0.0.Beta23
-  :version: *id009
-  :name: org.torquebox.torquebox-messaging-container
-- :platform: java
-  :source: http://rubygems.org/
-  :gem_version: !ruby/object:Gem::Version 
-    hash: -238992827
-    prerelease: true
-    segments: &id010 
-      - 1
-      - 0
-      - 0
-      - Beta23
-    version: 1.0.0.Beta23
-  :version: *id010
-  :name: org.torquebox.torquebox-naming-container
 - :platform: ruby
   :source: http://rubygems.torquebox.org/1864/
-  :gem_version: *id005
   :version: *id004
+  :gem_version: *id005
   :name: org.torquebox.vfs

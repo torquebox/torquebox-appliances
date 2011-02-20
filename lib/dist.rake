@@ -45,7 +45,7 @@ task 'torquebox:rpm' => [ 'rpm:all', 'rpm:repodata:force' ]
 desc "Resolve dependencies for TorqueBox RPMs and scribble spec files"
 task 'torquebox:rumpler' => [ 'sanity:versions:verify' ] do
   FileUtils.mkdir_p( 'specs/gems' )
-  sh "../rumpler/bin/rumpler -r gemfiles/root.yml -o ./specs/gems/ -n torquebox-rubygems-dependencies -V #{BuildVersion.instance.torquebox_rpm}"
+  sh "../rumpler/bin/rumpler -f -r gemfiles/root.yml -o ./specs/gems/ -n torquebox-rubygems-dependencies -V #{BuildVersion.instance.torquebox_rpm}"
 end
 
 task 'torquebox:rumpler:clean' do
