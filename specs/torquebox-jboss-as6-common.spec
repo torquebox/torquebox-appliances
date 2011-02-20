@@ -39,11 +39,19 @@ install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/common
 # Create the common lib directory to which we install our bootstrap jar.
 install -d -m 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/common/lib
 
+# Create /etc/sysconfig for our config
+install -d -m 755 $RPM_BUILD_ROOT/etc/sysconfig
+
 # Copy the common jars
 cp -R torquebox-%{torquebox_version}/jboss/common/torquebox/ $RPM_BUILD_ROOT/opt/%{jboss_name}/common/
 
 # Copy the bootstrap jars
 cp torquebox-%{torquebox_version}/jboss/common/lib/torquebox-*.jar $RPM_BUILD_ROOT/opt/%{jboss_name}/common/lib/
+
+# Write our config
+
+echo "TORQUEBOX_VERSION=%{torquebox_version}"           >> $RPM_BUILD_ROOT/etc/sysconfig/torquebox
+echo "TORQUEBOX_BUILD_NUMBER=%{torquebox_build_number}" >> $RPM_BUILD_ROOT/etc/sysconfig/torquebox
 
 %clean
 rm -Rf $RPM_BUILD_ROOT

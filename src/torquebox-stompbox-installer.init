@@ -26,6 +26,8 @@ JRUBY_HOME=/opt/jruby
 # Source networking configuration.
 . /etc/sysconfig/network
 
+. /etc/sysconfig/torquebox
+
 # Check that networking is up.
 [ ${NETWORKING} = "no" ] && exit 0
 
@@ -62,7 +64,14 @@ function remove_stompbox() {
   success_or_failure
 }
 
+function fixup_gemfile() {
+  echo -n " - Fix up Gemfile" 
+  sed -i "s/^\\s*source\\s*'http:\/\/rubygems\.torquebox\.org'\\s*$/source 'http:\/\/rubygems.torquebox.org\/$TORQUEBOX_BUILD_NUMBER\/'/g" /opt/stompbox/Gemfile
+  success_or_failure
+}
+
 function install_stompbox_bundle() {
+    fixup_gemfile
     echo " - Installing Gem bundle"
     cd ${STOMPBOX_INSTALL_DIR} && ${JRUBY_HOME}/bin/jruby -S bundle install
     success_or_failure
@@ -156,9 +165,9 @@ install() {
       echo ""
       install_stompbox_app
       install_stompbox_bundle
-      setup_database_user
-      setup_database
-      generate_stompbox_yml
+      #setup_database_user
+      #setup_database
+      #generate_stompbox_yml
     else
       success_or_failure
     fi
