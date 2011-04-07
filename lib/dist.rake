@@ -60,29 +60,29 @@ end
 
 desc "Build VMware"
 task 'appliance:vmware' => 'torquebox:rpm' do
-  sh "boxgrinder build ./appliances/torquebox.appl -p vmware -d local"
+  sh "boxgrinder-build ./appliances/torquebox.appl -p vmware -d local"
 end
 
 task 'appliance:vmware:only' do
-  sh "boxgrinder build ./appliances/torquebox.appl -p vmware -d local"
+  sh "boxgrinder-build ./appliances/torquebox.appl -p vmware -d local"
 end
 
 desc "Build EBS AMI"
 task 'appliance:ebs' => 'torquebox:rpm' do
-  sh 'boxgrinder build ./appliances/torquebox.appl -p ec2 -d ebs'
+  sh 'boxgrinder-build ./appliances/torquebox.appl -p ec2 -d ebs'
 end
 
 task 'appliance:ebs:only' do
-  sh 'boxgrinder build ./appliances/torquebox.appl -p ec2 -d ebs'
+  sh 'boxgrinder-build ./appliances/torquebox.appl -p ec2 -d ebs'
 end
 
 desc "Build S3 AMI"
 task 'appliance:ami' => 'torquebox:rpm' do
-  sh 'boxgrinder build ./appliances/torquebox.appl -p ec2 -d ami'
+  sh 'boxgrinder-build ./appliances/torquebox.appl -p ec2 -d ami'
 end
 
 task 'appliance:ami:only' do
-  sh 'boxgrinder build ./appliances/torquebox.appl -p ec2 -d ami'
+  sh 'boxgrinder-build ./appliances/torquebox.appl -p ec2 -d ami'
 end
 
 task 'appliance:clean' => [ 'torquebox:rpm:clean', 'torquebox:rumpler:clean' ] do
