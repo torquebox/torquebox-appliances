@@ -1,4 +1,4 @@
-%define torquebox_build_number 1864
+%define torquebox_build_number 53
 %define torquebox_version 1.0.0.CR1-SNAPSHOT
 %define torquebox_rpm_version 1.0.0.CR1.SNAPSHOT
 
@@ -11,7 +11,7 @@ Release:        1
 License:        LGPL
 BuildArch:      noarch
 Group:          Applications/System
-Source:         http://ci.stormgrind.org/repository/download/bt7/%{torquebox_build_number}:id/torquebox-dist-bin.zip?guest=1%{torquebox_build_number}
+Source:         http://torquebox.org/builds/%{torquebox_build_number}/torquebox-dist-bin.zip
 
 Requires:       torquebox-jboss-as6-common
 
@@ -46,6 +46,9 @@ rm -Rf $RPM_BUILD_ROOT
 /
 
 %changelog
+* Thu Apr 7 2011 Lance Ball
+- Update torquebox build number and dist url
+
 * Tue Dec 14 2010 Ben Browning
 - Upgrade to 1.0.0.RC1-SNAPSHOT
 

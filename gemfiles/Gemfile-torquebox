@@ -1,11 +1,9 @@
 source "http://rubygems.org"
-source "http://rubygems.torquebox.org/1864"
+source "http://rubygems.torquebox.org/53"
 
-gem 'org.torquebox.capistrano-support'
-gem 'org.torquebox.rake-support'
-gem 'org.torquebox.container-foundation'
-gem 'org.torquebox.messaging-client'
-gem 'org.torquebox.messaging-container'
-gem 'org.torquebox.naming-client'
-gem 'org.torquebox.naming-container'
-gem 'org.torquebox.vfs'
+gem 'torquebox-base'
+gem 'torquebox-vfs'
+gem 'torquebox'
+
+gem 'torquebox-capistrano-support'
+gem 'torquebox-rake-support'

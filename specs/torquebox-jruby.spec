@@ -1,4 +1,4 @@
-%define jruby_version 1.5.6
+%define jruby_version 1.6.0
 
 %global _binaries_in_noarch_packages_terminate_build 0
 
@@ -46,6 +46,9 @@ rm -Rf $RPM_BUILD_ROOT
 /
 
 %changelog
+* Thu Apr 7 2011 Lance Ball
+- Update jruby to 1.6.0
+
 * Tue Dec 14 2010 Ben Browning
 - Upgrade to JRuby 1.5.6
 

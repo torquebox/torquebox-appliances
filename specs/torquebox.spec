@@ -1,4 +1,4 @@
-%define torquebox_build_number 1864
+%define torquebox_build_number 53
 %define torquebox_version 1.0.0.CR1-SNAPSHOT
 %define torquebox_rpm_version 1.0.0.CR1.SNAPSHOT
 
@@ -30,5 +30,8 @@ mkdir $RPM_BUILD_ROOT
 /
 
 %changelog
+* Thu Apr 7 2011 Lance Ball
+- Update torquebox build number
+
 * Sun Feb 20 2011 Bob McWhirter
 - Initial release
