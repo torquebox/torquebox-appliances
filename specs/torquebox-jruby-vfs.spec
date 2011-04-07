@@ -33,6 +33,9 @@ rm -Rf $RPM_BUILD_ROOT
 
 cd %{_topdir}/BUILD
 
+# Create lib directory to which we copy the JRuby subdir
+install -d -m 755 $RPM_BUILD_ROOT/opt/%{jruby_name}/lib/
+
 %clean
 rm -Rf $RPM_BUILD_ROOT
 
@@ -42,7 +45,7 @@ rm -Rf $RPM_BUILD_ROOT
 
 %changelog
 * Thu Apr 7 2011 Lance Ball
-- Update torquebox build number and dist url. Remove jruby lib copies
+- Update torquebox build number and dist url
 
 * Tue Dec 14 2010 Ben Browning
 - Upgrade to 1.0.0.RC1-SNAPSHOT
