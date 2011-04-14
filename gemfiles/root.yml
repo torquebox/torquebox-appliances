@@ -3,3 +3,4 @@ inherent:
 base:
   - Gemfile-base
   - Gemfile-torquebox
+  - Gemfile-torquebox-extras
