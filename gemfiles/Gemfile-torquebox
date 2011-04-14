@@ -1,5 +1,5 @@
 source "http://rubygems.org"
-source "http://rubygems.torquebox.org/53"
+source "http://rubygems.torquebox.org/92"
 
 gem 'torquebox-base'
 gem 'torquebox-vfs'

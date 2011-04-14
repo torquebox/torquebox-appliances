@@ -1,6 +1,6 @@
-# Fri Apr  8 09:25:21 EDT 2011
-# Current version - ami-60619c09
-# Incremental Build #63
+# Thu Apr 14 15:26:03 EDT 2011
+# Current version - PENDING
+# Incremental Build #92
 name: torquebox
 version: 0
 release: 1.0
@@ -36,10 +36,6 @@ post:
     - "/bin/sed -i s/'^host'/'# host'/g             /var/lib/pgsql/data/pg_hba.conf"
     - "/bin/echo 'host    all         all         0.0.0.0/0          md5' >> /var/lib/pgsql/data/pg_hba.conf"
     - /bin/echo "listen_addresses = '*' " >> /var/lib/pgsql/data/postgresql.conf    
-    - echo "[ -b /dev/xvda3 ] && /sbin/mkswap -f /dev/xvda3" >> /etc/rc.local
-    - echo "[ -b /dev/xvda3 ] && /sbin/swapon /dev/xvda3" >> /etc/rc.local
-    - echo "[ -b /dev/xvdb ] && /sbin/mkswap -f /dev/xvdb" >> /etc/rc.local
-    - echo "[ -b /dev/xvdb ] && /sbin/swapon /dev/xvdb" >> /etc/rc.local
     - /bin/echo "PATH=/opt/jruby/bin:$PATH" > /etc/profile.d/torquebox.sh
     - /bin/echo "export JRUBY_HOME=/opt/jruby" >> /etc/profile.d/torquebox.sh
     - /bin/echo "export JBOSS_HOME=/opt/jboss-as6" >> /etc/profile.d/torquebox.sh

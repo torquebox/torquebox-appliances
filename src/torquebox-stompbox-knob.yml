@@ -1,4 +1,0 @@
-application:
-  root: /opt/stompbox
-  env: production
-

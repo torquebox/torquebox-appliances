@@ -1,0 +1,5 @@
+source "http://rubygems.org"
+source "http://rubygems.torquebox.org/92"
+
+gem 'torquebox-stompbox'
+gem 'torquebox-backstage'

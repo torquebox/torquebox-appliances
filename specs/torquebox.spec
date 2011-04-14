@@ -1,4 +1,4 @@
-%define torquebox_build_number 63
+%define torquebox_build_number 92
 %define torquebox_version 1.0.0.CR1-SNAPSHOT
 %define torquebox_rpm_version 1.0.0.CR1.SNAPSHOT
 
