@@ -53,20 +53,20 @@ class BuildVersion
     @torquebox         = nil
     @torquebox_rpm     = '1.0.0.CR1'
 
-    torquebox_versions = {}
-    Dir[ './specs/*.spec' ].each do |spec|
-      version = determine_value( spec, 'torquebox_build_number' )
-      ( torquebox_versions[spec] = version ) unless version.nil?
-    end
-    if ( torquebox_versions.values.uniq.size == 1 )
-      @torquebox = torquebox_versions.values.uniq.first
-    else
-      puts "TorqueBox build number mismatch!"
-      torquebox_versions.each do |spec, ver|
-        puts "  #{ver} - #{spec}"
-      end
-      raise( "TorqueBox build number mismatch" )
-    end
+#    torquebox_versions = {}
+#    Dir[ './specs/*.spec' ].each do |spec|
+#      version = determine_value( spec, 'torquebox_build_number' )
+#      ( torquebox_versions[spec] = version ) unless version.nil?
+#    end
+#    if ( torquebox_versions.values.uniq.size == 1 )
+#      @torquebox = torquebox_versions.values.uniq.first
+#    else
+#      puts "TorqueBox build number mismatch!"
+#      torquebox_versions.each do |spec, ver|
+#        puts "  #{ver} - #{spec}"
+#      end
+#      raise( "TorqueBox build number mismatch" )
+#    end
   end
 
 end

@@ -46,6 +46,9 @@ rm -Rf $RPM_BUILD_ROOT
 /
 
 %changelog
+* Fri Apr 15 2011 Lance Ball
+- 1.0.0.CR1 release
+
 * Thu Apr 7 2011 Lance Ball
 - Update jruby to 1.6.0
 
