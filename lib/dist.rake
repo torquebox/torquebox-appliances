@@ -13,16 +13,20 @@ end
 
 desc "Sanity-check versions of stuff"
 task 'sanity:versions' do
-  BuildVersion.instance
+  # don't use specific build versions for releases
+  # BuildVersion.instance
+  puts "Skipping sanity:versions. We're working with release builds now."
 end
 
 task 'sanity:versions:verify' => [ 'sanity:versions' ] do
-  puts "TorqueBox build number...#{BuildVersion.instance.torquebox}"
-  print "Type 'y' if this version is acceptable: "
-  c = STDIN.gets.strip
-  if ( c.downcase != 'y' )
-    fail "You didn't type 'y'"
-  end
+  # don't use specific build versions for releases
+  # puts "TorqueBox build number...#{BuildVersion.instance.torquebox}"
+  # print "Type 'y' if this version is acceptable: "
+  # c = STDIN.gets.strip
+  # if ( c.downcase != 'y' )
+  #   fail "You didn't type 'y'"
+  # end
+  puts "Skipping sanity:versions:verify. We're working with release builds now."
 end
 
 
@@ -43,7 +47,7 @@ task 'torquebox:rpm' => [ 'rpm:all', 'rpm:repodata:force' ]
 ### Rumpler
 ###
 desc "Resolve dependencies for TorqueBox RPMs and scribble spec files"
-task 'torquebox:rumpler' => [ 'sanity:versions:verify' ] do
+task 'torquebox:rumpler' => [ 'sanity:dirs' ] do
   FileUtils.mkdir_p( 'specs/gems' )
   sh "../rumpler/bin/rumpler -f -r gemfiles/root.yml -o ./specs/gems/ -n torquebox-rubygems-dependencies -V #{BuildVersion.instance.torquebox_rpm}"
 end

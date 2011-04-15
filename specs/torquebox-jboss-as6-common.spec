@@ -1,6 +1,5 @@
-%define torquebox_build_number 92
-%define torquebox_version 1.0.0.CR1-SNAPSHOT
-%define torquebox_rpm_version 1.0.0.CR1.SNAPSHOT
+%define torquebox_version 1.0.0.CR1
+%define torquebox_rpm_version 1.0.0.CR1
 
 %define jboss_name jboss-as6
 
@@ -11,7 +10,7 @@ Release:        1
 License:        LGPL
 BuildArch:      noarch
 Group:          Applications/System
-Source:         http://torquebox.org/builds/%{torquebox_build_number}/torquebox-dist-bin.zip
+Source:         http://repository-torquebox.forge.cloudbees.com/release/org/torquebox/torquebox-dist/%{torquebox_version}/torquebox-dist-%{torquebox_version}-bin.zip
 
 Requires:       %{jboss_name}
 Requires:       torquebox-jruby
@@ -51,7 +50,6 @@ cp torquebox-%{torquebox_version}/jboss/common/lib/torquebox-*.jar $RPM_BUILD_RO
 # Write our config
 
 echo "TORQUEBOX_VERSION=%{torquebox_version}"           >> $RPM_BUILD_ROOT/etc/sysconfig/torquebox
-echo "TORQUEBOX_BUILD_NUMBER=%{torquebox_build_number}" >> $RPM_BUILD_ROOT/etc/sysconfig/torquebox
 
 %clean
 rm -Rf $RPM_BUILD_ROOT
@@ -61,6 +59,9 @@ rm -Rf $RPM_BUILD_ROOT
 /
 
 %changelog
+* Fri Apr 15 13:42:01 EDT 2011 Lance Ball
+- 1.0.0.CR1 release
+
 * Thu Apr 7 2011 Lance Ball
 - Update torquebox build number and dist url
 

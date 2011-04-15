@@ -1,4 +1,3 @@
-%define torquebox_build_number 92
 %define torquebox_version 1.0.0.CR1-SNAPSHOT
 %define torquebox_rpm_version 1.0.0.CR1.SNAPSHOT
 
@@ -13,7 +12,7 @@ Release:        1
 License:        LGPL
 BuildArch:      noarch
 Group:          Applications/System
-Source:         http://torquebox.org/builds/%{torquebox_build_number}/torquebox-dist-bin.zip
+Source:         http://repository-torquebox.forge.cloudbees.com/release/org/torquebox/torquebox-dist/%{torquebox_version}/torquebox-dist-%{torquebox_version}-bin.zip
 
 Requires:       torquebox-jruby
 Requires:       torquebox-rubygem-org.torquebox.vfs-10
