@@ -23,12 +23,17 @@ The TorqueBox Common
 %install
 rm -Rf $RPM_BUILD_ROOT
 mkdir $RPM_BUILD_ROOT
-mkdir $RPM_BUILD_ROOT/torquebox
-mkdir $RPM_BUILD_ROOT/torquebox/apps
+mkdir $RPM_BUILD_ROOT/torquebox-%{torquebox_version}
+mkdir $RPM_BUILD_ROOT/torquebox-%{torquebox_version}/apps
 
 %files
 %defattr(-,root,root)
 /
+
+%post
+ln -s /opt/torquebox-%{torquebox_version} /opt/torquebox
+ln -s /opt/%{jboss_name} /opt/torquebox/%{jboss_name}
+ln -s /opt/jruby /opt/torquebox/jruby
 
 %changelog
 * Fri Apr 15 2011 Lance Ball
