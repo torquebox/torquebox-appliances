@@ -60,6 +60,10 @@ cd $RPM_BUILD_ROOT/opt/%{name}/server/default/deploy/jbossweb.sar && patch -i %{
 # Enable authentication for jmx-console
 cd $RPM_BUILD_ROOT/opt/%{name} && patch -p0 -i %{SOURCE3}
 
+# Enable torquebox-auth
+cd $RPM_BUILD_ROOT/opt/%{name}/server/default/conf/props && touch torquebox-users.properties
+cd $RPM_BUILD_ROOT/opt/%{name}/server/default/conf/props && touch torquebox-roles.properties
+
 install -d -m 755 $RPM_BUILD_ROOT%{_initrddir}
 install -m 755 %{SOURCE1} $RPM_BUILD_ROOT%{_initrddir}/%{name}
 

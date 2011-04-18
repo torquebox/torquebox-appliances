@@ -23,6 +23,8 @@ The TorqueBox Common
 %install
 rm -Rf $RPM_BUILD_ROOT
 mkdir $RPM_BUILD_ROOT
+mkdir $RPM_BUILD_ROOT/torquebox
+mkdir $RPM_BUILD_ROOT/torquebox/apps
 
 %files
 %defattr(-,root,root)

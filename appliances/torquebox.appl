@@ -39,6 +39,9 @@ post:
     - /bin/echo "PATH=/opt/jruby/bin:$PATH" > /etc/profile.d/torquebox.sh
     - /bin/echo "export JRUBY_HOME=/opt/jruby" >> /etc/profile.d/torquebox.sh
     - /bin/echo "export JBOSS_HOME=/opt/jboss-as6" >> /etc/profile.d/torquebox.sh
+    - /bin/echo "export TORQUEBOX_HOME=/opt/torquebox" >> /etc/profile.d/torquebox.sh
+    - /bin/echo "ln -s /opt/jruby /opt/torquebox/" >> /etc/profile.d/torquebox.sh
+    - /bin/echo "ln -s /opt/jboss-as6 /opt/torquebox/" >> /etc/profile.d/torquebox.sh
 
 repos:
   - name: "torquebox-local"
