@@ -26,7 +26,6 @@ packages:
   - openssh-clients
   - postgresql-server
   - torquebox
-  - torquebox-stompbox
 
 post:
   base:
