@@ -13,6 +13,7 @@ Source0:        http://superb-sea2.dl.sourceforge.net/project/jboss/JBoss/JBoss-
 Source1:        %{name}.init
 Source2:        jboss-as6-https-connector.patch
 Source3:        jboss-as6-jmx-console.patch
+Source4:        jboss-as6-login-config.patch
 Requires:       shadow-utils
 Requires:       coreutils
 Requires:       java-1.6.0-openjdk
@@ -63,6 +64,7 @@ cd $RPM_BUILD_ROOT/opt/%{name} && patch -p0 -i %{SOURCE3}
 # Enable torquebox-auth
 cd $RPM_BUILD_ROOT/opt/%{name}/server/default/conf/props && touch torquebox-users.properties
 cd $RPM_BUILD_ROOT/opt/%{name}/server/default/conf/props && touch torquebox-roles.properties
+cd $RPM_BUILD_ROOT/opt/%{name}/server/default/conf && patch -i %{SOURCE4}
 
 install -d -m 755 $RPM_BUILD_ROOT%{_initrddir}
 install -m 755 %{SOURCE1} $RPM_BUILD_ROOT%{_initrddir}/%{name}

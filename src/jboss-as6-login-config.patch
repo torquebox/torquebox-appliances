@@ -1,0 +1,19 @@
+*** /tmp/login-conf.xml	2011-04-18 16:39:57.000000000 -0400
+--- login-config.xml	2011-04-17 18:13:05.000000000 -0400
+*************** $Revision: 102506 $
+*** 145,149 ****
+--- 145,157 ----
+    </application-policy>
+  
+  
++   <application-policy name='torquebox-auth'>
++     <authentication>
++       <login-module code='org.jboss.security.auth.spi.UsersRolesLoginModule' flag='required'>
++         <module-option name='usersProperties'>props/torquebox-users.properties</module-option>
++         <module-option name='rolesProperties'>props/torquebox-roles.properties</module-option>
++       </login-module>
++     </authentication>
++   </application-policy>
+  </policy>
+
+
