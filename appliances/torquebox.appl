@@ -35,6 +35,8 @@ post:
     - "/bin/sed -i s/'^host'/'# host'/g             /var/lib/pgsql/data/pg_hba.conf"
     - "/bin/echo 'host    all         all         0.0.0.0/0          md5' >> /var/lib/pgsql/data/pg_hba.conf"
     - /bin/echo "listen_addresses = '*' " >> /var/lib/pgsql/data/postgresql.conf    
+    - echo "[ -b /dev/xvdc ] && /sbin/mkswap -f /dev/xvdc" >> /etc/rc.local
+    - echo "[ -b /dev/xvdc ] && /sbin/swapon /dev/xvdc" >> /etc/rc.local
     - /bin/echo "PATH=/opt/jruby/bin:$PATH" > /etc/profile.d/torquebox.sh
     - /bin/echo "export JRUBY_HOME=/opt/jruby" >> /etc/profile.d/torquebox.sh
     - /bin/echo "export JBOSS_HOME=/opt/jboss-as6" >> /etc/profile.d/torquebox.sh
