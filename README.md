@@ -50,3 +50,4 @@ configured for stompbox, you'll need to include the `--setup-db` and
 9. Build an appliance `$ rake appliance:ebs`
 
 
+
