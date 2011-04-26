@@ -51,7 +51,7 @@ class BuildVersion
 
   def initialize()
     @torquebox         = nil
-    @torquebox_rpm     = '1.0.0.CR1'
+    @torquebox_rpm     = '1.0.0.CR2'
 
 #    torquebox_versions = {}
 #    Dir[ './specs/*.spec' ].each do |spec|
