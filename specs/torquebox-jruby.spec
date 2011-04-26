@@ -49,7 +49,7 @@ rm -Rf $RPM_BUILD_ROOT
 * Tue Apr 26 2011 Lance Ball
 - 1.0.0.CR2 release
 
-* Fri apr 15 2011 lance ball
+* Fri Apr 15 2011 lance ball
 - 1.0.0.cr1 release
 
 * Thu Apr 7 2011 Lance Ball
