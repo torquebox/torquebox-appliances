@@ -1,5 +1,5 @@
-%define torquebox_version 1.0.0.CR1
-%define torquebox_rpm_version 1.0.0.CR1
+%define torquebox_version 1.0.0.CR2
+%define torquebox_rpm_version 1.0.0.CR2
 
 %define jboss_name jboss-as6
 
@@ -37,6 +37,9 @@ ln -s /opt/%{jboss_name} /opt/torquebox/%{jboss_name}
 ln -s /opt/jruby /opt/torquebox/jruby
 
 %changelog
+* Tue Apr 26 2011 Lance Ball
+- 1.0.0.CR2 release
+
 * Fri Apr 15 2011 Lance Ball
 - 1.0.0.CR1 release
 

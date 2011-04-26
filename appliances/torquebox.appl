@@ -1,9 +1,9 @@
-# Fri Apr 15 13:53:55 EDT 2011
+# Tue Apr 26 2011 Lance Ball
+# 1.0.0.CR2 
 # Current version - PENDING
-# Candidate Release 1
 name: torquebox
 version: 0
-release: 1.0
+release: 1.0.CR2
 
 summary: Appliance with Torquebox and JBoss AS 6
 

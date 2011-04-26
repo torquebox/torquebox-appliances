@@ -11,7 +11,7 @@ appliance, and a VMWare virtual machine.
 
 ## Running a TorqueBox Appliance
 
-The TorqueBox 1.0.0.CR1 appliance is a 64-bit virtual machine: `ami-a8ca36c1`.
+The TorqueBox 1.0.0.CR2 appliance is a 64-bit virtual machine: `ami-a8ca36c1`.
 Use your favorite AWS tools to launch an instance. Once launched TorqueBox
 should be running on port 8080.  To install
 [stompbox](http://github.com/torquebox/stompbox) and/or

@@ -1,4 +1,4 @@
-%define jruby_version 1.6.0
+%define jruby_version 1.6.1
 
 %global _binaries_in_noarch_packages_terminate_build 0
 
@@ -46,8 +46,11 @@ rm -Rf $RPM_BUILD_ROOT
 /
 
 %changelog
-* Fri Apr 15 2011 Lance Ball
-- 1.0.0.CR1 release
+* Tue Apr 26 2011 Lance Ball
+- 1.0.0.CR2 release
+
+* Fri Apr 15 2011 lance ball
+- 1.0.0.cr1 release
 
 * Thu Apr 7 2011 Lance Ball
 - Update jruby to 1.6.0
