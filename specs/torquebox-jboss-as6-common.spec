@@ -1,5 +1,5 @@
-%define torquebox_version 1.0.0.CR2
-%define torquebox_rpm_version 1.0.0.CR2
+%define torquebox_version 1.0.0.Final
+%define torquebox_rpm_version 1.0.0.Final
 
 %define jboss_name jboss-as6
 
@@ -59,6 +59,9 @@ rm -Rf $RPM_BUILD_ROOT
 /
 
 %changelog
+* Fri Apr 29 2011 Lance Ball
+- 1.0.0.Final release
+
 * Tue Apr 26 2011 Lance Ball
 - 1.0.0.CR2 release
 

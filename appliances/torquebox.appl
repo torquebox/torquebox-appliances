@@ -1,9 +1,9 @@
-# Wed Apr 27 2011 Lance Ball
-# 1.0.0.CR2 
+# Fri Apr 29 2011 Lance Ball
+# 1.0.0.Final 
 # ami-32ab545b
 name: torquebox
 version: 0
-release: 1.0.CR2
+release: 1.0.Final
 
 summary: Appliance with Torquebox and JBoss AS 6
 
