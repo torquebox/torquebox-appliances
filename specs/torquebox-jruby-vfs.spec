@@ -1,5 +1,5 @@
-%define torquebox_version 1.0.0.Final
-%define torquebox_rpm_version 1.0.0.Final
+%define torquebox_version 1.0.0
+%define torquebox_rpm_version 1.0.0
 
 %define jruby_name jruby
 
